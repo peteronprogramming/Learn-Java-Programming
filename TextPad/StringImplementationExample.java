@@ -1,7 +1,7 @@
 public class StringImplementationExample
 {
    public static void main(String[] args)
-   {   // String in Java is implemented as sequences of char
+   {       // String in Java is implemented as sequences of char
 	   String greeting = "Hello\uD835\uDD6b";
 	   System.out.println(greeting);
 
@@ -20,29 +20,29 @@ public class StringImplementationExample
 	   // getting character (code unit) at position idx, idx must between 0 and length() - 1
 	   System.out.println(greeting.charAt(idx));
 
-       /*
-          if code point at position idx + offset is an unpaired surrogates then index will be idx + offset
-          if code point at position idx + offset is a paired surrogates then index will be idx + offset + 1
-          getting a code point at position index - 1 (considering that index of a String started from 0)
-          in Unicode a character may be represented by more than one character (paired surrogates)
-          Java compiler automatically know if a code point at position index - 1 is an unpaired or paired surrogates
-       */
-       int offset = 6;
+           /*
+             if code point at position idx + offset is an unpaired surrogates then index will be idx + offset
+             if code point at position idx + offset is a paired surrogates then index will be idx + offset + 1
+             getting a code point at position index - 1 (considering that index of a String started from 0)
+             in Unicode a character may be represented by more than one character (paired surrogates)
+             Java compiler automatically know if a code point at position index - 1 is an unpaired or paired surrogates
+           */
+           int offset = 6;
 	   int index = greeting.offsetByCodePoints(idx, offset);
 	   System.out.println("Index is " + index);
 	   int cp = greeting.codePointAt(index - 1);
 	   System.out.println("cp = " + (char) cp);
 
-       /*
-          traverse a String, code point by code point, check if a code point at position i is the first or second half of supplementary character
-          if code point at position i is part of supplementary character then move to the next two code point positions
-       */
+           /*
+             traverse a String, code point by code point, check if a code point at position i is the first or second half of supplementary character
+             if code point at position i is part of supplementary character then move to the next two code point positions
+           */
 	   String HelloWorld = "Hello \uD835\uDD6b World";
 
 	   for (int i = 0; i < HelloWorld.length(); i++){
-		  cp = HelloWorld.codePointAt(i);
-          if (Character.isSupplementaryCodePoint(cp)) i++;
-          System.out.print((char) cp + " ");
+	      cp = HelloWorld.codePointAt(i);
+              if (Character.isSupplementaryCodePoint(cp)) i++;
+              System.out.print((char) cp + " ");
 	   }
 	   System.out.println("");
    }
