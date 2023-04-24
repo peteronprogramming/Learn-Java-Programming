@@ -32,6 +32,6 @@ public class MaybeSlotMachine
 	   else if (slot5 < 60) slot5R = "Koin Emas"; else if (slot5 < 80) slot5R = "Giok Emas";
 	   else slot5R = "Kakek Merah";
 
-	   System.out.println(slot1R + " , " + slot2R + " , " + slot3R + " , " + slot4R + " , " + slot5R); 
+	   System.out.println(slot1R + " , " + slot2R + " , " + slot3R + " , " + slot4R + " , " + slot5R);
    }
 }
